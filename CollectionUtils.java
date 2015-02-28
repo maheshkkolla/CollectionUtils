@@ -1,7 +1,7 @@
 import java.util.*;
 
-interface ListMapper<T> {
-	public T callbackForMap(T item);
+interface ListMapper<T,K> {
+	public K callbackForMap(T item);
 }
 
 interface ListFilter<T> {
@@ -9,8 +9,8 @@ interface ListFilter<T> {
 }
 
 public	class CollectionUtils{
-	public static <E> List<E> map(List<E> myList, ListMapper<E> callbackObj) {
-		List<E> resultList = new ArrayList<E>();
+	public static <E, K> List<K> map(List<E> myList, ListMapper<E,K> callbackObj) {
+		List<K> resultList = new ArrayList<K>();
 		for( E item: myList){
 			resultList.add(callbackObj.callbackForMap(item));
 		}
